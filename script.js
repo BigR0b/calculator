@@ -6,3 +6,8 @@ const divide = (a,b) => a / b;
 const operate  = (operator, num1, num2) => {
     return operator(num1, num2);
 }
+
+const calcDisplay = document.getElementById('displayNum');
+const numButtons = document.getElementsByClassName('calcNum');
+
+const zeroBtn = document.getElementById('zero')

@@ -1,5 +1,27 @@
 container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  height: 300px;
+  width: 250px;
+  flex-direction: column;
+  background-color: grey;
+  justify-content: stretch;
+}
+
+button {
+  flex-basis: auto;
+  text-align: center;
+  flex-grow: 1;
+}
+
+#displayNum {
+  text-align: end;
+  background-color: rgb(141, 77, 201);
+  flex-grow: 0.5;
+}
+
+.rows {
+  border: 1px solid black;
+  background-color: beige;
+  flex-grow: 2;
+  display: flex;
 }
