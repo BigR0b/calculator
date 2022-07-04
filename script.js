@@ -29,7 +29,7 @@ const clearBtn = document.querySelector(".clear");
 const equalBtn = document.querySelector(".calcSolve");
 const operatorBtns = document.querySelectorAll(".operator");
 const decimalBtn = document.querySelector(".decimal");
-const backspaceBtn = document.querySelector(".backspace");
+const deleteBtn = document.querySelector(".backspace");
 
 let clearAll = function () {
   calcInput.textContent = "";
@@ -50,7 +50,7 @@ for (let i = 0; i < numBtns.length; i++) {
       calcInput.textContent.includes("÷")
     ) {
       return;
-    } else if ((calcInput.textContent = "You cannot divide by 0")) {
+    } else if (calcInput.textContent === "You cannot divide by 0") {
       calcInput.textContent = "";
     }
     calcInput.textContent += numBtns[i].value;
@@ -107,3 +107,6 @@ equalBtn.addEventListener("click", function () {
     return;
   }
 });
+
+// Delete button
+deleteBtn.addEventListener("click", function () {});
