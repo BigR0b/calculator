@@ -51,11 +51,13 @@ clearBtn.addEventListener("click", function () {
   clearAll();
 });
 
+//Operator Buttons
 for (let i = 0; i < operatorBtns.length; i++) {
   operatorBtns[i].addEventListener("click", function () {
     if (calcInput.textContent) {
       if (!num1) {
         num1 = Number(calcInput.textContent);
+        operator = operatorBtns[i].value;
         calcInput.textContent = "";
       } else {
         return;
