@@ -2,8 +2,8 @@ const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
-let num1, num2, operator;
-let input = "";
+let num1, num2, operator, input;
+
 // switch (operator) {
 //   case "+":
 //     a + b;
@@ -19,7 +19,7 @@ const calcDisplay = document.getElementById("result");
 const numBtns = document.getElementsByClassName("number");
 const clearBtn = document.querySelector(".clear");
 const equalBtn = document.querySelector(".calcSolve");
-const operatorBtn = document.querySelectorAll(".operator");
+const operatorBtns = document.querySelectorAll(".operator");
 const decimalBtn = document.querySelector(".decimal");
 
 let clearAll = function () {
@@ -27,6 +27,8 @@ let clearAll = function () {
   calcDisplay.textContent = "";
   input = "";
   operator = "";
+  num1 = "";
+  num2 = "";
 };
 
 for (let i = 0; i < numBtns.length; i++) {
@@ -48,6 +50,21 @@ decimalBtn.addEventListener("click", function () {
 clearBtn.addEventListener("click", function () {
   clearAll();
 });
+
+for (let i = 0; i < operatorBtns.length; i++) {
+  operatorBtns[i].addEventListener("click", function () {
+    if (calcInput.textContent) {
+      if (!num1) {
+        num1 = Number(calcInput.textContent);
+        calcInput.textContent = "";
+      } else {
+        return;
+      }
+    } else {
+      return;
+    }
+  });
+}
 
 // Equal button
 equalBtn.addEventListener("click", function () {
