@@ -29,6 +29,7 @@ const clearBtn = document.querySelector(".clear");
 const equalBtn = document.querySelector(".calcSolve");
 const operatorBtns = document.querySelectorAll(".operator");
 const decimalBtn = document.querySelector(".decimal");
+const backspaceBtn = document.querySelector(".backspace");
 
 let clearAll = function () {
   calcInput.textContent = "";
@@ -42,8 +43,15 @@ let clearAll = function () {
 // Number buttons
 for (let i = 0; i < numBtns.length; i++) {
   numBtns[i].addEventListener("click", function () {
-    if (calcInput.textContent.includes("+")) {
+    if (
+      calcInput.textContent.includes("+") ||
+      calcInput.textContent.includes("-") ||
+      calcInput.textContent.includes("*") ||
+      calcInput.textContent.includes("÷")
+    ) {
       return;
+    } else if ((calcInput.textContent = "You cannot divide by 0")) {
+      calcInput.textContent = "";
     }
     calcInput.textContent += numBtns[i].value;
   });
@@ -86,10 +94,15 @@ for (let i = 0; i < operatorBtns.length; i++) {
 equalBtn.addEventListener("click", function () {
   if (!calcDisplay.textContent) {
     num2 = Number(calcInput.textContent);
-    solvedNum = operate(operator, num1, num2);
-    mathProblem = `${num1} ${operator} ${num2}`;
-    calcInput.textContent = mathProblem;
-    calcDisplay.textContent = solvedNum;
+    if (operator == "÷" && num2 == 0) {
+      clearAll();
+      calcInput.textContent = "You cannot divide by 0";
+    } else {
+      solvedNum = operate(operator, num1, num2);
+      mathProblem = `${num1} ${operator} ${num2}`;
+      calcInput.textContent = mathProblem;
+      calcDisplay.textContent = solvedNum;
+    }
   } else {
     return;
   }
