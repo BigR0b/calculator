@@ -20,6 +20,7 @@ const numBtns = document.getElementsByClassName("number");
 const clearBtn = document.querySelector(".clear");
 const equalBtn = document.querySelector(".calcSolve");
 const operatorBtn = document.querySelectorAll(".operator");
+const decimalBtn = document.querySelector(".decimal");
 
 let clearAll = function () {
   calcInput.textContent = "";
@@ -27,13 +28,21 @@ let clearAll = function () {
   input = "";
   operator = "";
 };
-// Number inputs
+
 for (let i = 0; i < numBtns.length; i++) {
   numBtns[i].addEventListener("click", function () {
     calcInput.textContent += numBtns[i].value;
-    input += numBtns[i].value;
   });
 }
+
+//Decimal button
+decimalBtn.addEventListener("click", function () {
+  if (!calcInput.textContent.includes(".")) {
+    calcInput.textContent += ".";
+  } else {
+    return;
+  }
+});
 
 // Clear button
 clearBtn.addEventListener("click", function () {
