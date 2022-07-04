@@ -109,4 +109,15 @@ equalBtn.addEventListener("click", function () {
 });
 
 // Delete button
-deleteBtn.addEventListener("click", function () {});
+deleteBtn.addEventListener("click", function () {
+  if (
+    calcInput.textContent.includes("+") ||
+    calcInput.textContent.includes("-") ||
+    calcInput.textContent.includes("*") ||
+    calcInput.textContent.includes("÷") ||
+    calcInput.textContent === "You cannot divide by 0"
+  ) {
+    return;
+  }
+  calcInput.textContent = calcInput.textContent.slice(0, -1);
+});
