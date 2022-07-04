@@ -3,7 +3,7 @@ const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
-let num1, num2, operator, solvedNum;
+let num1, num2, operator, solvedNum, mathProblem;
 
 const operate = function (o, a, b) {
   switch (o) {
@@ -36,11 +36,16 @@ let clearAll = function () {
   operator = "";
   num1 = "";
   num2 = "";
+  mathProblem = "";
 };
 
 for (let i = 0; i < numBtns.length; i++) {
   numBtns[i].addEventListener("click", function () {
-    calcInput.textContent += numBtns[i].value;
+    if (!calcInput.textContent) {
+      calcInput.textContent += numBtns[i].value;
+    } else {
+      return;
+    }
   });
 }
 
@@ -54,9 +59,7 @@ decimalBtn.addEventListener("click", function () {
 });
 
 // Clear button
-clearBtn.addEventListener("click", function () {
-  clearAll();
-});
+clearBtn.addEventListener("click", clearAll);
 
 //Operator Buttons
 for (let i = 0; i < operatorBtns.length; i++) {
@@ -66,8 +69,12 @@ for (let i = 0; i < operatorBtns.length; i++) {
         num1 = Number(calcInput.textContent);
         operator = operatorBtns[i].value;
         calcInput.textContent = "";
-      } else {
-        return;
+      } else if (calcDisplay.textContent) {
+        num1 = Number(calcDisplay.textContent);
+        num2 = "";
+        calcInput.textContent = "";
+        calcDisplay.textContent = "";
+        operator = operatorBtns[i].value;
       }
     } else {
       return;
@@ -80,7 +87,8 @@ equalBtn.addEventListener("click", function () {
   if (!calcDisplay.textContent) {
     num2 = Number(calcInput.textContent);
     solvedNum = operate(operator, num1, num2);
-    calcInput.textContent = `${num1} ${operator} ${num2}`;
+    mathProblem = `${num1} ${operator} ${num2}`;
+    calcInput.textContent = mathProblem;
     calcDisplay.textContent = solvedNum;
   } else {
     return;
