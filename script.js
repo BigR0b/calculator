@@ -39,13 +39,13 @@ let clearAll = function () {
   mathProblem = "";
 };
 
+// Number buttons
 for (let i = 0; i < numBtns.length; i++) {
   numBtns[i].addEventListener("click", function () {
-    if (!calcInput.textContent) {
-      calcInput.textContent += numBtns[i].value;
-    } else {
+    if (calcInput.textContent.includes("+")) {
       return;
     }
+    calcInput.textContent += numBtns[i].value;
   });
 }
 
